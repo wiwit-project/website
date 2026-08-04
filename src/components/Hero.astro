@@ -1,0 +1,77 @@
+---
+import appDark from "../assets/wiwit-app-dark.png";
+import appLight from "../assets/wiwit-app-light.png";
+import webDark from "../assets/wiwit-web-dark.png";
+import webLight from "../assets/wiwit-web-light.png";
+import { LINKS } from "../consts";
+import Button from "./Button.astro";
+import ThemedImage from "./ThemedImage.astro";
+
+const DASHBOARD_WIDTHS = [640, 980, 1898];
+const DASHBOARD_SIZES =
+  "(max-width: 639px) 480px, (max-width: 1040px) 100vw, 980px";
+---
+
+<section
+  class="relative flex flex-col items-center gap-5 px-4 pt-12 text-center sm:gap-5.5 sm:px-6 sm:pt-16 lg:px-14 lg:pt-19"
+>
+  <h1
+    class="heading-gradient m-0 max-w-220 text-[clamp(2.5rem,10vw,80px)] leading-[0.95] font-bold tracking-[-0.045em] text-balance"
+  >
+    Yet-Another, your<br />personal finance tracker app.
+  </h1>
+
+  <p
+    class="text-ink-muted m-0 max-w-150 text-[17px] leading-relaxed text-pretty sm:text-[19.5px]"
+  >
+    Except you can self-host this. Understand your budgets and cash flow.
+    Accessible on desktop, phone, and through APIs for custom automation.
+  </p>
+
+  <div
+    class="flex flex-col items-stretch gap-3 pt-1 sm:flex-row sm:items-center"
+  >
+    <Button
+      href={LINKS.docs}
+      class="rounded-xl px-6 py-3.75 text-[15.5px] sm:px-6.5"
+    >
+      Get started
+    </Button>
+    <Button
+      href={LINKS.demo}
+      variant="secondary"
+      class="rounded-xl px-6 py-3.75 text-[15.5px] sm:px-6.5"
+    >
+      Open demo
+    </Button>
+  </div>
+
+  <div
+    class="relative mt-10 flex w-full max-w-245 items-end gap-3 sm:mt-14 sm:block"
+  >
+    <!-- Mobile: a fixed-height window the dashboard is cropped into, sized by
+         the phone next to it. From sm up it goes back to a plain full-width
+         image with the phone floating over its corner. -->
+    <div
+      class="shadow-hero relative flex-1 self-stretch overflow-hidden rounded-xl sm:w-full sm:overflow-visible sm:rounded-none"
+    >
+      <ThemedImage
+        light={webLight}
+        dark={webDark}
+        alt="Wiwit web dashboard"
+        widths={DASHBOARD_WIDTHS}
+        sizes={DASHBOARD_SIZES}
+        class="absolute inset-y-0 right-0 block h-full w-auto max-w-none sm:static sm:h-auto sm:w-full"
+      />
+    </div>
+
+    <ThemedImage
+      light={appLight}
+      dark={appDark}
+      alt="Wiwit mobile app"
+      widths={[232, 464]}
+      sizes="232px"
+      class="phone-frame w-37.5 shrink-0 rounded-[22px] sm:absolute sm:right-4.5 sm:-bottom-8.5 sm:w-45 lg:w-58 lg:rounded-[26px]"
+    />
+  </div>
+</section>

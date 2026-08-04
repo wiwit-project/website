@@ -1,0 +1,21 @@
+---
+const VARIANTS = {
+  primary: "button-primary font-bold",
+  secondary: "surface border-line text-ink shadow-card border font-medium",
+} as const;
+
+interface Props {
+  href: string;
+  variant?: keyof typeof VARIANTS;
+  class?: string;
+}
+
+const { href, variant = "primary", class: className } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={["inline-block text-center whitespace-nowrap", VARIANTS[variant], className]}
+>
+  <slot />
+</a>

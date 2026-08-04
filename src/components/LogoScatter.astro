@@ -1,0 +1,67 @@
+---
+import Logo from "./Logo.astro";
+
+interface ScatteredLogo {
+  left: number;
+  top: number;
+  size: number;
+  rotate: number;
+}
+
+// Defined the positions of scattered logos
+const SCATTERED_LOGOS: ScatteredLogo[] = [
+  { left: 4, top: 88, size: 54, rotate: -12 },
+  { left: 12, top: 62, size: 34, rotate: 8 },
+  { left: 19, top: 92, size: 78, rotate: 6 },
+  { left: 27, top: 74, size: 28, rotate: -20 },
+  { left: 33, top: 40, size: 40, rotate: 14 },
+  { left: 41, top: 90, size: 46, rotate: -6 },
+  { left: 48, top: 58, size: 62, rotate: 18 },
+  { left: 55, top: 30, size: 30, rotate: -14 },
+  { left: 61, top: 84, size: 36, rotate: 10 },
+  { left: 68, top: 66, size: 52, rotate: -8 },
+  { left: 74, top: 44, size: 26, rotate: 22 },
+  { left: 80, top: 94, size: 68, rotate: -16 },
+  { left: 87, top: 70, size: 32, rotate: 4 },
+  { left: 93, top: 52, size: 44, rotate: -22 },
+  { left: 97, top: 86, size: 30, rotate: 12 },
+  { left: 8, top: 34, size: 24, rotate: -6 },
+  { left: 24, top: 20, size: 22, rotate: 16 },
+  { left: 45, top: 12, size: 20, rotate: -10 },
+  { left: 66, top: 16, size: 26, rotate: 8 },
+  { left: 88, top: 26, size: 22, rotate: -18 },
+];
+---
+
+<div
+  class="logo-scatter pointer-events-none relative h-44 w-full overflow-hidden sm:h-56 lg:h-64"
+  aria-hidden="true"
+>
+  {
+    SCATTERED_LOGOS.map((logo) => (
+      <div
+        class="absolute -translate-x-1/2 -translate-y-1/2"
+        style={`left: ${logo.left}%; top: ${logo.top}%; width: ${logo.size}px; rotate: ${logo.rotate}deg;`}
+      >
+        <Logo class="h-auto w-full" />
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .logo-scatter {
+    filter: grayscale(1);
+    opacity: 0.55;
+
+    /* Solid along the bottom edge, dissolving into the footer above it. */
+    --scatter-fade: linear-gradient(
+      to top,
+      #000 0%,
+      rgba(0, 0, 0, 0.45) 40%,
+      transparent 95%
+    );
+    -webkit-mask-image: var(--scatter-fade);
+    mask-image: var(--scatter-fade);
+  }
+</style>

@@ -1,0 +1,20 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  light: ImageMetadata;
+  dark: ImageMetadata;
+  alt: string;
+  class?: string;
+  widths?: number[];
+  sizes?: string;
+}
+
+const { light, dark, alt, class: className, widths, sizes } = Astro.props;
+const lightClass = [className, "dark:hidden"].filter(Boolean).join(" ");
+const darkClass = [className, "hidden dark:block"].filter(Boolean).join(" ");
+---
+
+<Image src={light} alt={alt} widths={widths} sizes={sizes} class={lightClass} />
+<Image src={dark} alt={alt} widths={widths} sizes={sizes} class={darkClass} />

@@ -1,0 +1,45 @@
+---
+import { SECTION_IDS } from "../consts";
+
+/* Each card is marked by a small abstract glyph rather than a full icon set. */
+const ICON_SHAPES = {
+  square: "h-2.5 w-2.5 rounded-[3px] bg-current",
+  ring: "h-3 w-3 rounded-full border-[3px] border-current",
+  bar: "h-1 w-3.5 rounded-[2px] bg-current",
+} as const;
+
+const FEATURES = [
+  {
+    shape: ICON_SHAPES.square,
+    title: "Transactions & categories",
+    body: "Log income and spending in seconds, in categories you define. The month sorts itself out.",
+  },
+  {
+    shape: ICON_SHAPES.ring,
+    title: "Cash flow at a glance",
+    body: "Net today, this month, this year plus average daily spend, so nothing sneaks up on you.",
+  },
+  {
+    shape: ICON_SHAPES.bar,
+    title: "Debts, settled or not",
+    body: "Money lent and borrowed lives in the same ledger as everything else.",
+  },
+] as const;
+---
+
+<section
+  id={SECTION_IDS.features}
+  class="relative grid scroll-mt-24 grid-cols-1 gap-4 px-4 pt-24 sm:px-6 md:grid-cols-3 md:gap-4.5 lg:px-14 lg:pt-32.5"
+>
+  {
+    FEATURES.map((feature) => (
+      <article class="surface border-line shadow-card inset-shadow-surface flex flex-col gap-3 rounded-2xl border px-7 py-7 sm:px-7 sm:py-7.5">
+        <div class="icon-tile flex h-8.5 w-8.5 items-center justify-center rounded-[10px] shadow-[inset_0_1px_0_rgba(255,255,255,0.5)]">
+          <span class={feature.shape} />
+        </div>
+        <h3 class="m-0 text-xl font-bold tracking-[-0.02em]">{feature.title}</h3>
+        <p class="text-ink-muted m-0 text-[15px] leading-relaxed">{feature.body}</p>
+      </article>
+    ))
+  }
+</section>

@@ -1,11 +1,28 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import ApiSection from "../components/ApiSection.astro";
+import Features from "../components/Features.astro";
+import Hero from "../components/Hero.astro";
+import LogoScatter from "../components/LogoScatter.astro";
+import SelfHostCta from "../components/SelfHostCta.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteNav from "../components/SiteNav.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-	<Welcome />
+  <main class="relative mx-auto w-full max-w-7xl overflow-hidden">
+    <!-- Lime bloom bleeding in from above the fold. -->
+    <div
+      class="hero-glow pointer-events-none absolute -top-55 left-1/2 h-155 w-250 max-w-full -translate-x-1/2"
+    >
+    </div>
+
+    <SiteNav />
+    <Hero />
+    <Features />
+    <ApiSection />
+    <SelfHostCta />
+    <SiteFooter />
+    <LogoScatter />
+  </main>
 </Layout>

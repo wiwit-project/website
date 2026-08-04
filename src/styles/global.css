@@ -1,1 +1,187 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, monospace;
+
+  --color-brand: #7ccf00;
+  --color-brand-bright: #a6ec3c;
+  --color-brand-soft: #b3e56b;
+}
+
+/*
+  Semantic tokens. Light is the default and the media query below swaps the same
+  names, so components describe intent ("canvas", "ink", "line") and never need a
+  `dark:` twin just to change a colour.
+*/
+:root {
+  color-scheme: light dark;
+
+  --ui-canvas: #f7f8f3;
+  --ui-grid-dot: rgba(23, 28, 18, 0.06);
+  --ui-glow-core: rgba(124, 207, 0, 0.3);
+  --ui-glow-mid: rgba(124, 207, 0, 0.08);
+
+  --ui-ink: #171c12;
+  --ui-ink-muted: #5a6150;
+  --ui-ink-faint: #7b8271;
+  --ui-heading-top: #171c12;
+  --ui-heading-fade: #5f6a52;
+
+  --ui-line: #e3e5da;
+  --ui-line-brand: #e3e5da;
+
+  --ui-surface: #ffffff;
+  --ui-surface-nav: rgba(255, 255, 255, 0.8);
+  --ui-surface-cta: linear-gradient(180deg, #ffffff, #f2f5ea);
+  --ui-surface-inset: inset 0 1px 0 #ffffff;
+
+  --ui-tile: linear-gradient(180deg, #a4e83f, #7ccf00);
+  --ui-tile-ink: #ffffff;
+
+  --ui-button: linear-gradient(180deg, #8ad617, #63ac00);
+  --ui-button-ink: #ffffff;
+  --ui-button-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 16px 34px -12px rgba(99, 172, 0, 0.6);
+
+  --ui-prompt: #5da300;
+  --ui-logo-mark: #6fbc00;
+  --ui-logo-cut: rgba(23, 28, 18, 0.8);
+  --ui-phone-frame: #ffffff;
+
+  --ui-shadow-nav: 0 14px 34px -16px rgba(23, 28, 18, 0.35);
+  --ui-shadow-card: 0 16px 34px -24px rgba(23, 28, 18, 0.5);
+  --ui-shadow-hero: 0 50px 90px -40px rgba(23, 28, 18, 0.55);
+  --ui-shadow-phone: 0 44px 80px -28px rgba(23, 28, 18, 0.6);
+  --ui-shadow-panel: 0 40px 80px -50px rgba(23, 28, 18, 0.7);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ui-canvas: #07090c;
+    --ui-grid-dot: rgba(124, 207, 0, 0.055);
+    --ui-glow-core: rgba(124, 207, 0, 0.22);
+    --ui-glow-mid: rgba(124, 207, 0, 0.05);
+
+    --ui-ink: #e7ebe2;
+    --ui-ink-muted: #98a08f;
+    --ui-ink-faint: #6d7669;
+    --ui-heading-top: #ffffff;
+    --ui-heading-fade: #a9b39d;
+
+    --ui-line: rgba(255, 255, 255, 0.1);
+    --ui-line-brand: rgba(124, 207, 0, 0.32);
+
+    --ui-surface: linear-gradient(180deg, #0e1216, #0a0d10);
+    --ui-surface-nav: linear-gradient(180deg, #12161a, #0c1013);
+    --ui-surface-cta: linear-gradient(180deg, #101508, #090c0f);
+    --ui-surface-inset: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+    --ui-tile: linear-gradient(
+      180deg,
+      rgba(124, 207, 0, 0.35),
+      rgba(124, 207, 0, 0.08)
+    );
+    --ui-tile-ink: #a6ec3c;
+
+    --ui-button: linear-gradient(180deg, #98e51a, #6fbc00);
+    --ui-button-ink: #0b1206;
+    --ui-button-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45),
+      0 16px 40px -12px rgba(124, 207, 0, 0.6);
+
+    --ui-prompt: #a6ec3c;
+    --ui-logo-mark: #7ccf00;
+    --ui-logo-cut: #ffffff;
+    --ui-phone-frame: #1b2027;
+
+    --ui-shadow-nav: 0 18px 40px -18px rgba(0, 0, 0, 0.9);
+    /* Dark cards sit on their own glow, so drop shadows read as smudges. */
+    --ui-shadow-card: 0 0 #0000;
+    --ui-shadow-hero: 0 60px 120px -40px rgba(0, 0, 0, 0.95);
+    --ui-shadow-phone: 0 44px 80px -26px rgba(0, 0, 0, 0.95);
+    --ui-shadow-panel: 0 0 #0000;
+  }
+}
+
+@theme inline {
+  --color-canvas: var(--ui-canvas);
+  --color-ink: var(--ui-ink);
+  --color-ink-muted: var(--ui-ink-muted);
+  --color-ink-faint: var(--ui-ink-faint);
+  --color-line: var(--ui-line);
+  --color-line-brand: var(--ui-line-brand);
+  --color-prompt: var(--ui-prompt);
+
+  --inset-shadow-surface: var(--ui-surface-inset);
+  --shadow-nav: var(--ui-shadow-nav);
+  --shadow-card: var(--ui-shadow-card);
+  --shadow-hero: var(--ui-shadow-hero);
+  --shadow-phone: var(--ui-shadow-phone);
+  --shadow-panel: var(--ui-shadow-panel);
+}
+
+@utility surface {
+  background: var(--ui-surface);
+}
+
+@utility surface-nav {
+  background: var(--ui-surface-nav);
+}
+
+@utility surface-cta {
+  background: var(--ui-surface-cta);
+}
+
+@utility icon-tile {
+  background: var(--ui-tile);
+  color: var(--ui-tile-ink);
+}
+
+@utility button-primary {
+  background: var(--ui-button);
+  color: var(--ui-button-ink);
+  box-shadow: var(--ui-button-shadow);
+}
+
+@utility phone-frame {
+  border: 7px solid var(--ui-phone-frame);
+  box-shadow: var(--ui-shadow-phone);
+}
+
+@utility dot-grid {
+  background-image: radial-gradient(var(--ui-grid-dot) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+@utility hero-glow {
+  background: radial-gradient(
+    closest-side,
+    var(--ui-glow-core),
+    var(--ui-glow-mid) 55%,
+    transparent
+  );
+}
+
+@utility cta-glow {
+  background: radial-gradient(closest-side, var(--ui-glow-core), transparent);
+}
+
+@utility heading-gradient {
+  background: linear-gradient(
+    180deg,
+    var(--ui-heading-top) 32%,
+    var(--ui-heading-fade)
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  a {
+    transition: color 150ms ease;
+  }
+}
