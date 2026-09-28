@@ -47,12 +47,9 @@
   --ui-prompt: #5da300;
   --ui-logo-mark: #6fbc00;
   --ui-logo-cut: rgba(23, 28, 18, 0.8);
-  --ui-phone-frame: #ffffff;
-
   --ui-shadow-nav: 0 14px 34px -16px rgba(23, 28, 18, 0.35);
   --ui-shadow-card: 0 16px 34px -24px rgba(23, 28, 18, 0.5);
   --ui-shadow-hero: 0 50px 90px -40px rgba(23, 28, 18, 0.55);
-  --ui-shadow-phone: 0 44px 80px -28px rgba(23, 28, 18, 0.6);
   --ui-shadow-panel: 0 40px 80px -50px rgba(23, 28, 18, 0.7);
 }
 
@@ -92,13 +89,10 @@
     --ui-prompt: #a6ec3c;
     --ui-logo-mark: #7ccf00;
     --ui-logo-cut: #ffffff;
-    --ui-phone-frame: #1b2027;
-
     --ui-shadow-nav: 0 18px 40px -18px rgba(0, 0, 0, 0.9);
     /* Dark cards sit on their own glow, so drop shadows read as smudges. */
     --ui-shadow-card: 0 0 #0000;
     --ui-shadow-hero: 0 60px 120px -40px rgba(0, 0, 0, 0.95);
-    --ui-shadow-phone: 0 44px 80px -26px rgba(0, 0, 0, 0.95);
     --ui-shadow-panel: 0 0 #0000;
   }
 }
@@ -116,7 +110,6 @@
   --shadow-nav: var(--ui-shadow-nav);
   --shadow-card: var(--ui-shadow-card);
   --shadow-hero: var(--ui-shadow-hero);
-  --shadow-phone: var(--ui-shadow-phone);
   --shadow-panel: var(--ui-shadow-panel);
 }
 
@@ -141,11 +134,6 @@
   background: var(--ui-button);
   color: var(--ui-button-ink);
   box-shadow: var(--ui-button-shadow);
-}
-
-@utility phone-frame {
-  border: 7px solid var(--ui-phone-frame);
-  box-shadow: var(--ui-shadow-phone);
 }
 
 @utility dot-grid {
