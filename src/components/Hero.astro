@@ -49,9 +49,7 @@ const DASHBOARD_SIZES =
   <div
     class="relative mt-10 flex w-full max-w-245 items-end gap-3 sm:mt-14 sm:block"
   >
-    <!-- Mobile: a fixed-height window the dashboard is cropped into, sized by
-         the phone next to it. From sm up it goes back to a plain full-width
-         image with the phone floating over its corner. -->
+    <!-- Mobile screenshot. -->
     <div
       class="shadow-hero relative flex-1 self-stretch overflow-hidden rounded-xl sm:w-full sm:overflow-visible sm:rounded-none"
     >
@@ -69,9 +67,9 @@ const DASHBOARD_SIZES =
       light={appLight}
       dark={appDark}
       alt="Wiwit mobile app"
-      widths={[232, 464]}
-      sizes="232px"
-      class="phone-frame w-37.5 shrink-0 rounded-[22px] sm:absolute sm:right-4.5 sm:-bottom-8.5 sm:w-45 lg:w-58 lg:rounded-[26px]"
+      widths={[300, 600]}
+      sizes="(max-width: 639px) 188px, (max-width: 1023px) 225px, 290px"
+      class="w-47 translate-y-5 shrink-0 sm:absolute sm:right-4.5 sm:-bottom-8.5 sm:w-56.25 lg:w-72.5"
     />
   </div>
 </section>
