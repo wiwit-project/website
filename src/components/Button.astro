@@ -1,7 +1,8 @@
 ---
 const VARIANTS = {
   primary: "button-primary font-bold",
-  secondary: "surface border-line text-ink shadow-card border font-medium",
+  secondary:
+    "surface border-line text-ink shadow-card border font-medium hover:border-brand",
 } as const;
 
 interface Props {
@@ -15,7 +16,11 @@ const { href, variant = "primary", class: className } = Astro.props;
 
 <a
   href={href}
-  class:list={["inline-block text-center whitespace-nowrap", VARIANTS[variant], className]}
+  class:list={[
+    "inline-block text-center whitespace-nowrap transition-[scale,filter,border-color] duration-200 ease-out hover:brightness-110 motion-safe:active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand motion-reduce:transition-none",
+    VARIANTS[variant],
+    className,
+  ]}
 >
   <slot />
 </a>
